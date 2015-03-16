@@ -117,6 +117,36 @@ git reset - -hard 3ca89
 
 git diff lab2.tex
 
+\paragraph{Зафиксировать изменения в локальном репозитории, зафиксировать изменения в центральном репозитории}
+~
+
+git commit -a -m "just for push"
+
+git push origin
+
+\paragraph{Получить изменения из центрального репозитория}
+~
+
+git pull
+
+\paragraph{Поэкспериментировать с ветками}
+~
+
+Создание новой ветки \\
+git branch test \\
+~
+
+Переключение на другую ветку \\
+git checkout test \\
+~
+
+Слияние \\
+git merge test \\
+~
+
+Удаление ветки после слияния \\
+git branch -d test \\
+~
 
 
 \end{document}
