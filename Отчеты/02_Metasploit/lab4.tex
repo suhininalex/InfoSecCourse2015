@@ -514,7 +514,96 @@ msf > db_nmap -sn 192.168.1.*
 \paragraph{Исследовать различные этапы и режимы работы nmap с использованием утилиты Wireshark}
 ~
 
-?
+При помощи утилиты wireshark были рассмотрены три случая работы nmap:
+
+\begin{enumerate}
+\item Сканирование локальной сети
+Как видно из примера ниже, сканирование локальной сети производится не при помощи ICMP пакетов, а при помощи ARP запросов.
+
+При сканировании определенного узла wireshark отлавливает два пакета связанных с arp запросом и ответом.
+\begin{verbatim}
+No.     Time           Source                
+Destination           Protocol Length Info
+      1 0.000000000    CadmusCo_bf:fd:c9     
+      Broadcast             ARP      42     Who 
+      has 10.0.0.30?  Tell 10.0.0.20
+      
+      
+No.     Time           Source                
+Destination           Protocol Length Info
+      2 0.000256000    CadmusCo_f1:b5:af     
+      CadmusCo_bf:fd:c9     ARP      60     
+      10.0.0.30 is  at 08:00:27:f1:b5:af
+\end{verbatim}
+
+\item Успешное сканирование порта
+При сканировании порта nmap пытается установить соединение по указанному сокету. Установка TCP соединения, как известно, производится согласно правила трех рукопожатий. Анализируя второй шаг этого процесса можно определить состояние указанного сокета. Кроме того, следует отметить, что данному процессу предшествует обыкновенное сканирование, указанное в предыдущем пункте.
+
+\begin{verbatim}
+No.     Time           Source                
+Destination           Protocol Length Info
+      1 0.000000000    CadmusCo_bf:fd:c9     
+      Broadcast             ARP      42     Who 
+      has 10.0.0.30?  Tell 10.0.0.20
+      
+No.     Time           Source                
+Destination           Protocol Length Info
+      2 0.000271000    CadmusCo_f1:b5:af     
+      CadmusCo_bf:fd:c9     ARP      60     
+      10.0.0.30 is at 08:00:27:f1:b5:af
+      
+No.     Time           Source                
+Destination           Protocol Length Info
+      3 0.001097000    10.0.0.20             
+      10.0.0.30             TCP      58     57092 
+      > ssh [SYN] Seq=0 Win=1024 Len=0 MSS=1460
+
+No.     Time           Source                
+Destination           Protocol Length Info
+      4 0.001340000    10.0.0.30             
+      10.0.0.20             TCP      60     ssh > 
+      57092 [SYN, ACK] Seq=0 Ack=1 Win=5840 Len=0 
+      MSS=1460
+
+No.     Time           Source                
+Destination           Protocol Length Info
+      5 0.001351000    10.0.0.20             
+      10.0.0.30             TCP      54     57092 
+      > ssh [RST] Seq=1 Win=0 Len=0
+\end{verbatim}
+Согласно правила трех рукопожатий ожидается следующая последовательность пакетов с флагами SYN, SYN+ACK, ACK. Как видно из примера, в ответ на попытку установки соединения (SYN) хост подтверждает установку соединения (SYN+ACK). Последим шагом должна является отправка ACK, однако так как нет необходимости устанавливать соединение, в данном случае отправляется RST.
+
+\item Неудачное сканирование порта
+Данный пример иллюстрирует сканирование закрытого порта. Как и в предыдущем случае, процесс протекает по тому же алгоритму, однако на втором шаге исследуемый хост отправляет пакет с флагом RST, сообщая о том, что порт закрыт.
+\begin{verbatim}
+No.     Time           Source                
+Destination           Protocol Length Info
+      1 0.000000000    CadmusCo_bf:fd:c9     
+      Broadcast             ARP      42     Who 
+      has 10.0.0.30?  Tell 10.0.0.20
+
+No.     Time           Source                
+Destination           Protocol Length Info
+      2 0.000218000    CadmusCo_f1:b5:af     
+      CadmusCo_bf:fd:c9     ARP      60     
+      10.0.0.30 is at 08:00:27:f1:b5:af
+
+No.     Time           Source                
+Destination           Protocol Length Info
+      3 0.001017000    10.0.0.20             
+      10.0.0.30             TCP      58     63464 
+      > vlsi-lm [SYN] Seq=0 Win=1024 Len=0 
+      MSS=1460
+
+No.     Time           Source                
+Destination           Protocol Length Info
+      4 0.001245000    10.0.0.30             
+      10.0.0.20             TCP      60     vlsi-
+      lm > 63464 [RST, ACK] Seq=1 Ack=1 Win=0 
+      Len=0
+\end{verbatim}
+
+\end{enumerate}
 
 \section{Выводы}
 ~

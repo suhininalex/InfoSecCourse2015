@@ -1,0 +1,45 @@
+No.     Time           Source                Destination           Protocol Length Info
+      1 0.000000000    CadmusCo_bf:fd:c9     Broadcast             ARP      42     Who has 10.0.0.30?  Tell 10.0.0.20
+
+Frame 1: 42 bytes on wire (336 bits), 42 bytes captured (336 bits) on interface 0
+    Interface id: 0
+    Encapsulation type: Ethernet (2)
+    Arrival Time: May 25, 2015 04:12:00.838050000 EDT
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1432541520.838050000 seconds
+    [Time delta from previous captured frame: 0.000000000 seconds]
+    [Time delta from previous displayed frame: 0.000000000 seconds]
+    [Time since reference or first frame: 0.000000000 seconds]
+    Frame Number: 1
+    Frame Length: 42 bytes (336 bits)
+    Capture Length: 42 bytes (336 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:arp]
+    [Coloring Rule Name: ARP]
+    [Coloring Rule String: arp]
+Ethernet II, Src: CadmusCo_bf:fd:c9 (08:00:27:bf:fd:c9), Dst: Broadcast (ff:ff:ff:ff:ff:ff)
+Address Resolution Protocol (request)
+
+No.     Time           Source                Destination           Protocol Length Info
+      2 0.000256000    CadmusCo_f1:b5:af     CadmusCo_bf:fd:c9     ARP      60     10.0.0.30 is at 08:00:27:f1:b5:af
+
+Frame 2: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+    Interface id: 0
+    Encapsulation type: Ethernet (1)
+    Arrival Time: May 25, 2015 04:12:00.838306000 EDT
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1432541520.838306000 seconds
+    [Time delta from previous captured frame: 0.000256000 seconds]
+    [Time delta from previous displayed frame: 0.000256000 seconds]
+    [Time since reference or first frame: 0.000256000 seconds]
+    Frame Number: 2
+    Frame Length: 60 bytes (480 bits)
+    Capture Length: 60 bytes (480 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:arp]
+    [Coloring Rule Name: ARP]
+    [Coloring Rule String: arp]
+Ethernet II, Src: CadmusCo_f1:b5:af (08:00:27:f1:b5:af), Dst: CadmusCo_bf:fd:c9 (08:00:27:bf:fd:c9)
+Address Resolution Protocol (reply)

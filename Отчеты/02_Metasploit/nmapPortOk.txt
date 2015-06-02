@@ -1,0 +1,51 @@
+No.     Time           Source                Destination           Protocol Length Info
+      1 0.000000000    CadmusCo_bf:fd:c9     Broadcast             ARP      42     Who has 10.0.0.30?  Tell 10.0.0.20
+
+Frame 1: 42 bytes on wire (336 bits), 42 bytes captured (336 bits) on interface 0
+Ethernet II, Src: CadmusCo_bf:fd:c9 (08:00:27:bf:fd:c9), Dst: Broadcast (ff:ff:ff:ff:ff:ff)
+Address Resolution Protocol (request)
+
+No.     Time           Source                Destination           Protocol Length Info
+      2 0.000271000    CadmusCo_f1:b5:af     CadmusCo_bf:fd:c9     ARP      60     10.0.0.30 is at 08:00:27:f1:b5:af
+
+Frame 2: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+Ethernet II, Src: CadmusCo_f1:b5:af (08:00:27:f1:b5:af), Dst: CadmusCo_bf:fd:c9 (08:00:27:bf:fd:c9)
+Address Resolution Protocol (reply)
+
+No.     Time           Source                Destination           Protocol Length Info
+      3 0.001097000    10.0.0.20             10.0.0.30             TCP      58     57092 > ssh [SYN] Seq=0 Win=1024 Len=0 MSS=1460
+
+Frame 3: 58 bytes on wire (464 bits), 58 bytes captured (464 bits) on interface 0
+Ethernet II, Src: CadmusCo_bf:fd:c9 (08:00:27:bf:fd:c9), Dst: CadmusCo_f1:b5:af (08:00:27:f1:b5:af)
+Internet Protocol Version 4, Src: 10.0.0.20 (10.0.0.20), Dst: 10.0.0.30 (10.0.0.30)
+Transmission Control Protocol, Src Port: 57092 (57092), Dst Port: ssh (22), Seq: 0, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      4 0.001340000    10.0.0.30             10.0.0.20             TCP      60     ssh > 57092 [SYN, ACK] Seq=0 Ack=1 Win=5840 Len=0 MSS=1460
+
+Frame 4: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+Ethernet II, Src: CadmusCo_f1:b5:af (08:00:27:f1:b5:af), Dst: CadmusCo_bf:fd:c9 (08:00:27:bf:fd:c9)
+Internet Protocol Version 4, Src: 10.0.0.30 (10.0.0.30), Dst: 10.0.0.20 (10.0.0.20)
+Transmission Control Protocol, Src Port: ssh (22), Dst Port: 57092 (57092), Seq: 0, Ack: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      5 0.001351000    10.0.0.20             10.0.0.30             TCP      54     57092 > ssh [RST] Seq=1 Win=0 Len=0
+
+Frame 5: 54 bytes on wire (432 bits), 54 bytes captured (432 bits) on interface 0
+Ethernet II, Src: CadmusCo_bf:fd:c9 (08:00:27:bf:fd:c9), Dst: CadmusCo_f1:b5:af (08:00:27:f1:b5:af)
+Internet Protocol Version 4, Src: 10.0.0.20 (10.0.0.20), Dst: 10.0.0.30 (10.0.0.30)
+Transmission Control Protocol, Src Port: 57092 (57092), Dst Port: ssh (22), Seq: 1, Len: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      6 4.999310000    CadmusCo_f1:b5:af     CadmusCo_bf:fd:c9     ARP      60     Who has 10.0.0.20?  Tell 10.0.0.30
+
+Frame 6: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0
+Ethernet II, Src: CadmusCo_f1:b5:af (08:00:27:f1:b5:af), Dst: CadmusCo_bf:fd:c9 (08:00:27:bf:fd:c9)
+Address Resolution Protocol (request)
+
+No.     Time           Source                Destination           Protocol Length Info
+      7 4.999337000    CadmusCo_bf:fd:c9     CadmusCo_f1:b5:af     ARP      42     10.0.0.20 is at 08:00:27:bf:fd:c9
+
+Frame 7: 42 bytes on wire (336 bits), 42 bytes captured (336 bits) on interface 0
+Ethernet II, Src: CadmusCo_bf:fd:c9 (08:00:27:bf:fd:c9), Dst: CadmusCo_f1:b5:af (08:00:27:f1:b5:af)
+Address Resolution Protocol (reply)
